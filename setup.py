@@ -1,8 +1,9 @@
+from distutils.core import setup
 
 setup(
   name = 'tiptap-parser',
   packages = ['tiptapparser'],
-  version = '0.0.1',
+  version = '0.0.2',
   license = 'MIT',
   author = 'Daniel Elisenberg',
   url = 'https://github.com/DanielElisenberg/tiptap-parser',
