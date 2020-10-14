@@ -21,9 +21,9 @@ def parse_content(content):
         return content['text']
     else:
         return ''
-    
+
     inner_content_string = ''
     for inner_content in content['content']:
         inner_content_string += parse_content(inner_content)
-    
+
     return prefix + inner_content_string + postfix
