@@ -1,2 +1,2 @@
-test_method():
+def test_method():
     print("test")
