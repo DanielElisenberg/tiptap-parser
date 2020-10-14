@@ -1,3 +1,51 @@
+parse_dict = {
+    'heading1': {
+        'prefix': '<h1>',
+        'postfix': '</h1>'
+    },
+    'heading2': {
+        'prefix': '<h2>',
+        'postfix': '</h2>'
+    },
+    'heading3': {
+        'prefix': '<h3>',
+        'postfix': '</h3>'
+    },
+    'paragraph': {
+        'prefix': '<p>',
+        'postfix': '</p>'
+    },
+    'bullet_list': {
+        'prefix': '<ul>',
+        'postfix': '</ul>'
+    },
+    'ordered_list': {
+        'prefix': '<ol>',
+        'postfix': '</ol>'
+    },
+    'list_item': {
+        'prefix': '<li>',
+        'postfix': '</li>'
+    },
+    'bold': {
+        'prefix': '<strong>',
+        'postfix': '</strong>'        
+    },
+    'italic': {
+        'prefix': '<em>',
+        'postfix': '</em>'
+    },
+    'strike': {
+        'prefix': '<s>',
+        'postfix': '</s>'
+    },
+    'underline': {
+        'prefix': '<u>',
+        'postfix': '</u>'
+    }
+}
+
+
 def parse(json):
     html_string = ''
     for content in json['content']:
@@ -7,28 +55,19 @@ def parse(json):
 
 def parse_content(content):
     content_type = content['type']
-    prefix = ''
-    postfix = ''
-
-    if content_type == 'heading':
-        level = content['attrs']['level']
-        prefix = f'<h{level}>'
-        postfix = f'</h{level}>'
-    elif content_type == 'paragraph':
-        prefix = '<p>'
-        postfix = '</p>'
-    elif content_type == 'bullet_list':
-        prefix = '<ul>'
-        postfix = '</ul>'
-    elif content_type == 'ordered_list':
-        prefix = '<ol>'
-        postfix = '</ol>'
-    elif content_type == 'list_item':
-        prefix = '<li>'
-        postfix = '</li>'
-    elif content_type == 'text':
+    if content_type == 'text':
         return content['text']
-    else:
+
+    try:
+        level = content['attrs']['level']
+        print(f'{content_type}{level}')
+        content_type = f'{content_type}{level}'
+    except Exception:
+        pass
+
+    try:
+        content_tags = parse_dict[content_type]
+    except Exception:
         return ''
 
     inner_content_string = ''
@@ -41,7 +80,8 @@ def parse_content(content):
         inner_content_string += parse_content(inner_content)
 
     _, end_marks, _ = handle_marks(active_marks, {})
-    return prefix + inner_content_string + end_marks + postfix
+    return content_tags['prefix'] + \
+        inner_content_string + end_marks + content_tags['postfix']
 
 
 def handle_marks(active, content):
@@ -50,19 +90,12 @@ def handle_marks(active, content):
     end_marks = [mark for mark in active if mark not in current_marks]
     new_marks = [mark for mark in current_marks if mark not in active]
 
-    tag = {
-        'bold': 'strong',
-        'italic': 'em',
-        'strike': 's',
-        'underline': 'u'
-    }
-
     new_marks_html = ''
     for mark in new_marks:
-        new_marks_html += f'<{tag[mark]}>'
+        new_marks_html += f'{parse_dict[mark]["prefix"]}'
 
     end_marks_html = ''
     for mark in end_marks:
-        end_marks_html += f'</{tag[mark]}>'
+        end_marks_html += f'{parse_dict[mark]["postfix"]}'
 
     return new_marks_html, end_marks_html, current_marks
