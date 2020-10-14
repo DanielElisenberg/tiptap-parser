@@ -1,2 +1,2 @@
-def test_method():
-    print("test")
+def parse():
+    return 1

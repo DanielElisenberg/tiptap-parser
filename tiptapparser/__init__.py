@@ -1,1 +1,1 @@
-from tiptapparser.parser import test_method
+from tiptapparser.parser import parse
