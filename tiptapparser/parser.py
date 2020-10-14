@@ -47,7 +47,6 @@ def parse_content(content):
 def handle_marks(active, content):
     content_marks = content.get("marks", [])
     current_marks = [mark['type'] for mark in content_marks]
-
     end_marks = [mark for mark in active if mark not in current_marks]
     new_marks = [mark for mark in current_marks if mark not in active]
 
@@ -61,6 +60,7 @@ def handle_marks(active, content):
     new_marks_html = ''
     for mark in new_marks:
         new_marks_html += f'<{tag[mark]}>'
+
     end_marks_html = ''
     for mark in end_marks:
         end_marks_html += f'</{tag[mark]}>'
