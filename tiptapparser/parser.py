@@ -17,6 +17,15 @@ def parse_content(content):
     elif content_type == 'paragraph':
         prefix = '<p>'
         postfix = '</p>'
+    elif content_type == 'bullet_list':
+        prefix = '<ul>'
+        postfix = '</ul>'
+    elif content_type == 'ordered_list':
+        prefix = '<ol>'
+        postfix = '</ol>'
+    elif content_type == 'list_item':
+        prefix = '<li>'
+        postfix = '</li>'
     elif content_type == 'text':
         return content['text']
     else:
