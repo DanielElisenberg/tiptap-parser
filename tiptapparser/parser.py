@@ -51,26 +51,18 @@ def handle_marks(active, content):
     end_marks = [mark for mark in active if mark not in current_marks]
     new_marks = [mark for mark in current_marks if mark not in active]
 
+    tag = {
+        'bold': 'strong',
+        'italic': 'em',
+        'strike': 's',
+        'underline': 'u'
+    }
+
     new_marks_html = ''
     for mark in new_marks:
-        if mark == 'bold':
-            new_marks_html += '<strong>'
-        elif mark == 'italic':
-            new_marks_html += '<em>'
-        elif mark == 'strike':
-            new_marks_html += '<s>'
-        elif mark == 'underline':
-            new_marks_html += '<u>'
-
+        new_marks_html += f'<{tag[mark]}>'
     end_marks_html = ''
     for mark in end_marks:
-        if mark == 'bold':
-            end_marks_html += '</strong>'
-        elif mark == 'italic':
-            end_marks_html += '</em>'
-        elif mark == 'strike':
-            end_marks_html += '</s>'
-        elif mark == 'underline':
-            end_marks_html += '</u>'
+        end_marks_html += f'</{tag[mark]}>'
 
     return new_marks_html, end_marks_html, current_marks
