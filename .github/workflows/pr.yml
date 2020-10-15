@@ -12,16 +12,16 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install dependencies
-        uses: VaultVulp/action-pipenv@v2.0.1
+        uses: DanielElisenberg/action-pipenv@python3.8
         with:
           command: install
 
       - name: Lint
-        uses: VaultVulp/action-pipenv@v2.0.1
+        uses: DanielElisenberg/action-pipenv@python3.8
         with:
           command: run lint
 
       - name: Test
-        uses: VaultVulp/action-pipenv@v2.0.1
+        uses: DanielElisenberg/action-pipenv@python3.8
         with:
           command: run test
