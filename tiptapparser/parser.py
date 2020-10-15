@@ -28,7 +28,6 @@ def parse_content(content):
 
     try:
         level = content['attrs']['level']
-        print(f'{content_type}{level}')
         content_type = f'{content_type}{level}'
     except Exception:
         pass
@@ -77,7 +76,7 @@ def handle_marks(active, content):
 
 
 def handle_mark_attributes(attributes):
-    attributes_html_string = ' '
+    attributes_html_string = ''
     for key, val in attributes.items():
-        attributes_html_string += f'{key}="{val}"'
+        attributes_html_string += f' {key}="{val}"'
     return attributes_html_string
