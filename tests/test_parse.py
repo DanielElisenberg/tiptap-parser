@@ -13,3 +13,11 @@ def test_parse_content_with_emphasis():
 
 def test_parse_content_with_lists():
     assert parse(td.content_with_lists_json) == td.content_with_lists_html
+
+
+def test_parse_content_with_links():
+    assert parse(td.content_with_links_json) == td.content_with_links_html
+
+
+def test_parse_complex_content():
+    assert parse(td.complex_content_json) == td.complex_content_html
