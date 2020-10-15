@@ -1,0 +1,33 @@
+on:
+    push:
+      branches:
+        - main
+      paths-ignore:
+        - '.github/**'
+        - 'README.md'
+        - '.gitignore'
+  
+  jobs:
+    build:
+      name: Build and publish on pypi
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+  
+        - name: Install dependencies
+          uses: DanielElisenberg/action-pipenv@python3.8
+          with:
+            command: install --dev
+  
+        - name: Setup
+          uses: DanielElisenberg/action-pipenv@python3.8
+          with:
+            command: run setup
+
+        - name: Publish
+          uses: DanielElisenberg/action-pipenv@python3.8
+          with:
+            command: run publish
+          env:
+            TWINE_USERNAME: ${{ secrets.PYPI_USER }}
+            TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
