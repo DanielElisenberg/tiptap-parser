@@ -6,14 +6,17 @@ tiptap-parse is a python3 library for parsing json-output from the tiptap editor
 ### Get started
 
 Install with pip
-``
+
+```
 pip install tiptap-parse
-``
+```
+
 
 import into your project and parse away:
-``
+
+```
 from tiptapparse import parse
 
 html_string = parse(json_content)
-``
+```
 
