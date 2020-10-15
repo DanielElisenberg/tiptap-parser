@@ -8,6 +8,7 @@ twine = "*"
 pytest = "*"
 flake8 = "*"
 pyyaml = "*"
+keyring = "*"
 
 [packages]
 
