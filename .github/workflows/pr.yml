@@ -15,12 +15,12 @@ jobs:
         uses: VaultVulp/action-pipenv@v2.0.1
         with:
           command: run lint
-      
+
           - name: Install dependencies
         uses: VaultVulp/action-pipenv@v2.0.1
         with:
           command: install
-      
+
       - name: Test
         uses: VaultVulp/action-pipenv@v2.0.1
         with:
