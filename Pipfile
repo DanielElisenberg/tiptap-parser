@@ -16,4 +16,4 @@ python_version = "3.8"
 
 [scripts]
 test = "python -m pytest"
-lint = "flake8 tests tiptapparser"
+lint = "python -m flake8 tests tiptapparser"
