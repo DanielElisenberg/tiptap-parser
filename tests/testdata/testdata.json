@@ -355,7 +355,257 @@
       }
     ]
   },
+  "content_with_links_json": {
+    "type": "doc",
+    "content": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "text": "This is a "
+          },
+          {
+            "type": "text",
+            "marks": [
+              {
+                "type": "link",
+                "attrs": {
+                  "href": "reddit.com"
+                }
+              },
+              {
+                "type": "bold"
+              }
+            ],
+            "text": "message"
+          },
+          {
+            "type": "text",
+            "text": " with "
+          },
+          {
+            "type": "text",
+            "marks": [
+              {
+                "type": "link",
+                "attrs": {
+                  "href": "www.google.com"
+                }
+              }
+            ],
+            "text": "links"
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ]
+      }
+    ]
+  },
+  "complex_content_json": {
+    "type": "doc",
+    "content": [
+      {
+        "type": "heading",
+        "attrs": {
+          "level": 1
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Complex content"
+          }
+        ]
+      },
+      {
+        "type": "horizontal_rule"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "text": "This is the first paragraph. Here is "
+          },
+          {
+            "type": "text",
+            "marks": [
+              {
+                "type": "link",
+                "attrs": {
+                  "href": "www.google.com"
+                }
+              }
+            ],
+            "text": "google.com."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "attrs": {
+          "level": 2
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Emphasis on lists"
+          }
+        ]
+      },
+      {
+        "type": "bullet_list",
+        "content": [
+          {
+            "type": "list_item",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "this is a "
+                  },
+                  {
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "underline"
+                      }
+                    ],
+                    "text": "bullet list"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "list_item",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "it has "
+                  },
+                  {
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "text": "sublists"
+                  }
+                ]
+              },
+              {
+                "type": "bullet_list",
+                "content": [
+                  {
+                    "type": "list_item",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "with "
+                          },
+                          {
+                            "type": "text",
+                            "marks": [
+                              {
+                                "type": "link",
+                                "attrs": {
+                                  "href": "www.reddit.com"
+                                }
+                              }
+                            ],
+                            "text": "links"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "list_item",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "and "
+                  },
+                  {
+                    "type": "text",
+                    "marks": [
+                      {
+                        "type": "underline"
+                      },
+                      {
+                        "type": "italic"
+                      },
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "text": "numbered"
+                  },
+                  {
+                    "type": "text",
+                    "text": " lists"
+                  }
+                ]
+              },
+              {
+                "type": "ordered_list",
+                "attrs": {
+                  "order": 1
+                },
+                "content": [
+                  {
+                    "type": "list_item",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "as "
+                          },
+                          {
+                            "type": "text",
+                            "marks": [
+                              {
+                                "type": "italic"
+                              }
+                            ],
+                            "text": "sublists"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "simple_content_html": "<h1>this is a h1</h1><p>this is a paragraph.</p><h2>here is a h2</h2><p>and then another paragraph</p>",
   "content_with_emphasis_html": "<p>this is a paragraph with <strong>bold, </strong><em>italics, </em><s>strikethrough</s> and <u>underscored</u> text.</p><p>sometimes all <strong>to<em>g<s><u>et</s></u>h</em>er</strong></p>",
-  "content_with_lists_html": "<ul><li><p>this is a list</p></li><li><p>with</p></li><li><p>points</p><ul><li><p>and sublists</p></li><li><p>with other</p><ul><li><p>even deeper sublists</p></li></ul></li><li><p>and</p></li></ul></li><li><p>then back</p></li></ul><ol><li><p>and numbered lists</p></li><li><p>are allowed too</p></li><li><p>lists</p></li></ol>"
+  "content_with_lists_html": "<ul><li><p>this is a list</p></li><li><p>with</p></li><li><p>points</p><ul><li><p>and sublists</p></li><li><p>with other</p><ul><li><p>even deeper sublists</p></li></ul></li><li><p>and</p></li></ul></li><li><p>then back</p></li></ul><ol><li><p>and numbered lists</p></li><li><p>are allowed too</p></li><li><p>lists</p></li></ol>",
+  "content_with_links_html": "<p>This is a <a href=\"reddit.com\"><strong>message</a></strong> with <a href=\"www.google.com\">links</a>.</p>",
+  "complex_content_html": "<h1>Complex content</h1><hr><p>This is the first paragraph. Here is <a href=\"www.google.com\">google.com.</a></p><h2>Emphasis on lists</h2><ul><li><p>this is a <u>bullet list</u></p></li><li><p>it has <strong>sublists</strong></p><ul><li><p>with <a href=\"www.reddit.com\">links</a></p></li></ul></li><li><p>and <u><em><strong>numbered</u></em></strong> lists</p><ol><li><p>as <em>sublists</em></p></li></ol></li></ul>"
 }

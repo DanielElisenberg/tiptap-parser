@@ -1,48 +1,17 @@
-parse_dict = {
-    'heading1': {
-        'prefix': '<h1>',
-        'postfix': '</h1>'
-    },
-    'heading2': {
-        'prefix': '<h2>',
-        'postfix': '</h2>'
-    },
-    'heading3': {
-        'prefix': '<h3>',
-        'postfix': '</h3>'
-    },
-    'paragraph': {
-        'prefix': '<p>',
-        'postfix': '</p>'
-    },
-    'bullet_list': {
-        'prefix': '<ul>',
-        'postfix': '</ul>'
-    },
-    'ordered_list': {
-        'prefix': '<ol>',
-        'postfix': '</ol>'
-    },
-    'list_item': {
-        'prefix': '<li>',
-        'postfix': '</li>'
-    },
-    'bold': {
-        'prefix': '<strong>',
-        'postfix': '</strong>'
-    },
-    'italic': {
-        'prefix': '<em>',
-        'postfix': '</em>'
-    },
-    'strike': {
-        'prefix': '<s>',
-        'postfix': '</s>'
-    },
-    'underline': {
-        'prefix': '<u>',
-        'postfix': '</u>'
-    }
+tag_for = {
+    'heading1': 'h1',
+    'heading2': 'h2',
+    'heading3': 'h3',
+    'paragraph': 'p',
+    'bullet_list': 'ul',
+    'ordered_list': 'ol',
+    'list_item': 'li',
+    'bold': 'strong',
+    'italic': 'em',
+    'strike': 's',
+    'underline': 'u',
+    'link': 'a',
+    'horizontal_rule': 'hr'
 }
 
 
@@ -57,16 +26,17 @@ def parse_content(content):
     content_type = content['type']
     if content_type == 'text':
         return content['text']
+    if content_type == 'horizontal_rule':
+        return f'<{tag_for[content_type]}>'
 
     try:
         level = content['attrs']['level']
-        print(f'{content_type}{level}')
         content_type = f'{content_type}{level}'
     except Exception:
         pass
 
     try:
-        content_tags = parse_dict[content_type]
+        content_tag = tag_for[content_type]
     except Exception:
         return ''
 
@@ -80,22 +50,36 @@ def parse_content(content):
         inner_content_string += parse_content(inner_content)
 
     _, end_marks, _ = handle_marks(active_marks, {})
-    return content_tags['prefix'] + \
-        inner_content_string + end_marks + content_tags['postfix']
+    return f'<{content_tag}>' + inner_content_string \
+        + end_marks + f'</{content_tag}>'
 
 
 def handle_marks(active, content):
     content_marks = content.get("marks", [])
-    current_marks = [mark['type'] for mark in content_marks]
+    current_marks = [mark for mark in content_marks]
     end_marks = [mark for mark in active if mark not in current_marks]
     new_marks = [mark for mark in current_marks if mark not in active]
 
     new_marks_html = ''
     for mark in new_marks:
-        new_marks_html += f'{parse_dict[mark]["prefix"]}'
+        mark_type = mark['type']
+        attributes = ''
+        try:
+            attributes += handle_mark_attributes(mark['attrs'])
+        except Exception:
+            pass
+        new_marks_html += f'<{tag_for[mark_type]}{attributes}>'
 
     end_marks_html = ''
     for mark in end_marks:
-        end_marks_html += f'{parse_dict[mark]["postfix"]}'
+        mark_type = mark['type']
+        end_marks_html += f'</{tag_for[mark_type]}>'
 
     return new_marks_html, end_marks_html, current_marks
+
+
+def handle_mark_attributes(attributes):
+    attributes_html_string = ''
+    for key, val in attributes.items():
+        attributes_html_string += f' {key}="{val}"'
+    return attributes_html_string

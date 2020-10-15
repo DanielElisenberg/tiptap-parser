@@ -12,7 +12,7 @@ setup(
   license='MIT',
   author='Daniel Elisenberg',
   url='https://github.com/DanielElisenberg/tiptap-parser',
-  download_url='https://github.com/DanielElisenberg/tiptap-parser/archive/0.0.2.tar.gz',
+  download_url='https://github.com/DanielElisenberg/tiptap-parser/archive/1.0.0.tar.gz',
   keywords=['TIPTAP', 'PARSE', 'JSON', 'HTML'],
   install_requires=[],
   classifiers=[
