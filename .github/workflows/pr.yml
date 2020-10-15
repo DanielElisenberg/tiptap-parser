@@ -1,0 +1,27 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Test and lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Lint
+        uses: VaultVulp/action-pipenv@v2.0.1
+        with:
+          command: run lint
+      
+          - name: Install dependencies
+        uses: VaultVulp/action-pipenv@v2.0.1
+        with:
+          command: install
+      
+      - name: Test
+        uses: VaultVulp/action-pipenv@v2.0.1
+        with:
+          command: run test
