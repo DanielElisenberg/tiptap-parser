@@ -1,48 +1,16 @@
 parse_dict = {
-    'heading1': {
-        'prefix': '<h1>',
-        'postfix': '</h1>'
-    },
-    'heading2': {
-        'prefix': '<h2>',
-        'postfix': '</h2>'
-    },
-    'heading3': {
-        'prefix': '<h3>',
-        'postfix': '</h3>'
-    },
-    'paragraph': {
-        'prefix': '<p>',
-        'postfix': '</p>'
-    },
-    'bullet_list': {
-        'prefix': '<ul>',
-        'postfix': '</ul>'
-    },
-    'ordered_list': {
-        'prefix': '<ol>',
-        'postfix': '</ol>'
-    },
-    'list_item': {
-        'prefix': '<li>',
-        'postfix': '</li>'
-    },
-    'bold': {
-        'prefix': '<strong>',
-        'postfix': '</strong>'
-    },
-    'italic': {
-        'prefix': '<em>',
-        'postfix': '</em>'
-    },
-    'strike': {
-        'prefix': '<s>',
-        'postfix': '</s>'
-    },
-    'underline': {
-        'prefix': '<u>',
-        'postfix': '</u>'
-    }
+    'heading1': 'h1',
+    'heading2': 'h2',
+    'heading3': 'h3',
+    'paragraph': 'p',
+    'bullet_list': 'ul',
+    'ordered_list': 'ol',
+    'list_item': 'li',
+    'bold': 'strong',
+    'italic': 'em',
+    'strike': 's',
+    'underline': 'u',
+    'link': 'a'
 }
 
 
