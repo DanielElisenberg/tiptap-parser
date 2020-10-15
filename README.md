@@ -8,14 +8,14 @@ tiptap-parse is a python3 library for parsing json-output from the [tiptap](http
 Install with pip
 
 ```
-pip install tiptap-parse
+pip install tiptap-parser
 ```
 
 
 import into your project and parse away:
 
 ```
-from tiptapparse import parse
+from tiptapparser import parse
 
 html_string = parse(json_content)
 ```
