@@ -1,4 +1,4 @@
-parse_dict = {
+tag_for = {
     'heading1': 'h1',
     'heading2': 'h2',
     'heading3': 'h3',
@@ -34,7 +34,7 @@ def parse_content(content):
         pass
 
     try:
-        content_tags = parse_dict[content_type]
+        content_tag = tag_for[content_type]
     except Exception:
         return ''
 
@@ -48,8 +48,8 @@ def parse_content(content):
         inner_content_string += parse_content(inner_content)
 
     _, end_marks, _ = handle_marks(active_marks, {})
-    return content_tags['prefix'] + \
-        inner_content_string + end_marks + content_tags['postfix']
+    return f'<{content_tag}>' + inner_content_string \
+        + end_marks + f'</{content_tag}>'
 
 
 def handle_marks(active, content):
@@ -60,10 +60,10 @@ def handle_marks(active, content):
 
     new_marks_html = ''
     for mark in new_marks:
-        new_marks_html += f'{parse_dict[mark]["prefix"]}'
+        new_marks_html += f'<{tag_for[mark]}>'
 
     end_marks_html = ''
     for mark in end_marks:
-        end_marks_html += f'{parse_dict[mark]["postfix"]}'
+        end_marks_html += f'</{tag_for[mark]}>'
 
     return new_marks_html, end_marks_html, current_marks
