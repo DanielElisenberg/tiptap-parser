@@ -1,0 +1,27 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Test and lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        uses: DanielElisenberg/action-pipenv@python3.8
+        with:
+          command: install --dev
+
+      - name: Lint
+        uses: DanielElisenberg/action-pipenv@python3.8
+        with:
+          command: run lint
+
+      - name: Test
+        uses: DanielElisenberg/action-pipenv@python3.8
+        with:
+          command: run test

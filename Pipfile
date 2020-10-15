@@ -5,10 +5,17 @@ verify_ssl = true
 
 [dev-packages]
 twine = "*"
-v = {editable = true,version = "*"}
 pytest = "*"
+flake8 = "*"
+pyyaml = "*"
 
 [packages]
 
 [requires]
 python_version = "3.8"
+
+[scripts]
+test = "python -m pytest"
+lint = "python -m flake8 tests tiptapparser"
+setup = "python setup.py sdist"
+publish = "twine upload dist/*"
