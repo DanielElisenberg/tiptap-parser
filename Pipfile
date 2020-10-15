@@ -9,6 +9,7 @@ pytest = "*"
 flake8 = "*"
 pyyaml = "*"
 keyring = "*"
+secretstorage = "*"
 
 [packages]
 
