@@ -29,7 +29,7 @@ parse_dict = {
     },
     'bold': {
         'prefix': '<strong>',
-        'postfix': '</strong>'        
+        'postfix': '</strong>'
     },
     'italic': {
         'prefix': '<em>',
