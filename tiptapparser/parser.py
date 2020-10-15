@@ -10,7 +10,8 @@ tag_for = {
     'italic': 'em',
     'strike': 's',
     'underline': 'u',
-    'link': 'a'
+    'link': 'a',
+    'horizontal_rule': 'hr'
 }
 
 
@@ -25,6 +26,8 @@ def parse_content(content):
     content_type = content['type']
     if content_type == 'text':
         return content['text']
+    if content_type == 'horizontal_rule':
+        return f'<{tag_for[content_type]}>'
 
     try:
         level = content['attrs']['level']
