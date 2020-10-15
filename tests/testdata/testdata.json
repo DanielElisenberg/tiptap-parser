@@ -371,8 +371,7 @@
               {
                 "type": "link",
                 "attrs": {
-                  "href": "reddit.com",
-                  "target": null
+                  "href": "reddit.com"
                 }
               },
               {
@@ -391,8 +390,7 @@
               {
                 "type": "link",
                 "attrs": {
-                  "href": "www.google.com",
-                  "target": null
+                  "href": "www.google.com"
                 }
               }
             ],
@@ -610,6 +608,6 @@
   "simple_content_html": "<h1>this is a h1</h1><p>this is a paragraph.</p><h2>here is a h2</h2><p>and then another paragraph</p>",
   "content_with_emphasis_html": "<p>this is a paragraph with <strong>bold, </strong><em>italics, </em><s>strikethrough</s> and <u>underscored</u> text.</p><p>sometimes all <strong>to<em>g<s><u>et</s></u>h</em>er</strong></p>",
   "content_with_lists_html": "<ul><li><p>this is a list</p></li><li><p>with</p></li><li><p>points</p><ul><li><p>and sublists</p></li><li><p>with other</p><ul><li><p>even deeper sublists</p></li></ul></li><li><p>and</p></li></ul></li><li><p>then back</p></li></ul><ol><li><p>and numbered lists</p></li><li><p>are allowed too</p></li><li><p>lists</p></li></ol>",
-  "content_with_links_html": "<p>This is a <strong><a href='reddit.com'>message</a></strong> with <a href='www.google.com'>links</a>.</p>",
+  "content_with_links_html": "<p>This is a <a href=\"reddit.com\"><strong>message</a></strong> with <a href=\"www.google.com\">links</a>.</p>",
   "complex_content_html": "placeholder"
 }

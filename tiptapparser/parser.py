@@ -54,16 +54,30 @@ def parse_content(content):
 
 def handle_marks(active, content):
     content_marks = content.get("marks", [])
-    current_marks = [mark['type'] for mark in content_marks]
+    current_marks = [mark for mark in content_marks]
     end_marks = [mark for mark in active if mark not in current_marks]
     new_marks = [mark for mark in current_marks if mark not in active]
 
     new_marks_html = ''
     for mark in new_marks:
-        new_marks_html += f'<{tag_for[mark]}>'
+        mark_type = mark['type']
+        attributes = ''
+        try:
+            attributes += handle_mark_attributes(mark['attrs'])
+        except Exception:
+            pass
+        new_marks_html += f'<{tag_for[mark_type]}{attributes}>'
 
     end_marks_html = ''
     for mark in end_marks:
-        end_marks_html += f'</{tag_for[mark]}>'
+        mark_type = mark['type']
+        end_marks_html += f'</{tag_for[mark_type]}>'
 
     return new_marks_html, end_marks_html, current_marks
+
+
+def handle_mark_attributes(attributes):
+    attributes_html_string = ' '
+    for key, val in attributes.items():
+        attributes_html_string += f'{key}="{val}"'
+    return attributes_html_string
