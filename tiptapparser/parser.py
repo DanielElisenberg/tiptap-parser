@@ -11,7 +11,8 @@ tag_for = {
     'strike': 's',
     'underline': 'u',
     'link': 'a',
-    'horizontal_rule': 'hr'
+    'horizontal_rule': 'hr',
+    'hard_break': 'br'
 }
 
 
@@ -26,7 +27,7 @@ def parse_content(content):
     content_type = content['type']
     if content_type == 'text':
         return content['text']
-    if content_type == 'horizontal_rule':
+    if content_type in ['horizontal_rule', 'hard_break']:
         return f'<{tag_for[content_type]}>'
 
     try:
