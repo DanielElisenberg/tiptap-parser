@@ -1,14 +1,9 @@
+import re
 from distutils.core import setup
-from distutils.command.build import build as build_orig
 
 
-class build(build_orig):
-    def run(self):
-        self.distribution.fetch_build_eggs(['pyyaml'])
-
-import yaml
-with open("version.yml") as version_yml:
-    version = yaml.load(version_yml, Loader=yaml.FullLoader)['version']
+with open("version.yml", encoding="utf-8") as f:
+    re.search(r'(?<=version: ).*', f.read()).group(0)
 
 setup(
   name='tiptap-parser',
