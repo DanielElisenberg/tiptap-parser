@@ -5,8 +5,8 @@ from distutils.command.build import build as build_orig
 class build(build_orig):
     def run(self):
         self.distribution.fetch_build_eggs(['pyyaml'])
-        import yaml
 
+import yaml
 with open("version.yml") as version_yml:
     version = yaml.load(version_yml, Loader=yaml.FullLoader)['version']
 
