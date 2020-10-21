@@ -1,12 +1,11 @@
-import yaml
-
 from distutils.core import setup
-from setuptools.command.build import build as _build
+from distutils.command.build import build as build_orig
 
-class build(_build):
+
+class build(build_orig):
     def run(self):
-        subprocess.call(["pip", "install", "pyyaml"])
-        _build.run(self)
+        self.distribution.fetch_build_eggs(['pyyaml'])
+        import yaml
 
 with open("version.yml") as version_yml:
     version = yaml.load(version_yml, Loader=yaml.FullLoader)['version']
