@@ -3,7 +3,7 @@ from distutils.core import setup
 
 
 with open("version.yml", encoding="utf-8") as f:
-    re.search(r'(?<=version: ).*', f.read()).group(0)
+    version = re.search(r'(?<=version: ).*', f.read()).group(0)
 
 setup(
   name='tiptap-parser',
