@@ -14,7 +14,7 @@ setup(
   url='https://github.com/DanielElisenberg/tiptap-parser',
   download_url='https://github.com/DanielElisenberg/tiptap-parser/archive/1.0.2.tar.gz',
   keywords=['TIPTAP', 'PARSE', 'JSON', 'HTML'],
-  setup_requires=['pyyaml']
+  setup_requires=['pyyaml'],
   install_requires=[],
   classifiers=[
     'Development Status :: 4 - Beta',
