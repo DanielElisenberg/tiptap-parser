@@ -43,7 +43,7 @@ def parse_content(content):
 
     inner_content_string = ''
     active_marks = []
-    for inner_content in content['content']:
+    for inner_content in content.get('content', []):
         new_marks, end_marks, active_marks = handle_marks(
             active_marks, inner_content
         )
